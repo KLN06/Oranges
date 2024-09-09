@@ -27,84 +27,83 @@ namespace Oranges
                 throw new ArgumentException("The number of oranges must be either 1 or 2!");
             }
 
-            var rowsAndColumns = new List<(int row, int column)>();
-            var newRottenOranges = new List<(int row, int column)>();
-            foreach (var orange in rowsAndColumns)
-            {
-                newRottenOranges.Add(orange);
-            }
+            var rottenOranges = new List<(int row, int column)>();
+            
             for (int i = 0; i < numOfRottenOranges; i++)
             {
                 Console.WriteLine("Type in the row and column value of a rotten orange, separated by a space");
                 string[] stringValuesArr = Console.ReadLine().Split(" ");
                 var row = int.Parse(stringValuesArr[0]);
                 var column = int.Parse(stringValuesArr[1]);
-                rowsAndColumns.Add((row, column));
+                rottenOranges.Add((row, column));
             }
+
+            var allOranges = K * L;
+
             for (int i = 0; i < R; i++)
             {
-                for(int o = 0; o<rowsAndColumns.Count; o++)
+                for(int o = 0; o<rottenOranges.Count; o++)
                 {
-                    var orange = rowsAndColumns[o];
+                    var orange = rottenOranges[o];
                     {
 
                         if (orange.row != K - 1 && orange.column != L - 1 && orange.row != 0 && orange.column != 0)
                         {
 
-                            if (!rowsAndColumns.Contains(((orange.row) + 1, orange.column)))
+                            if (!rottenOranges.Contains(((orange.row) + 1, orange.column)))
                             {
-                                rowsAndColumns.Add(((orange.row) + 1, orange.column));
+                                rottenOranges.Add(((orange.row) + 1, orange.column));
                             }
-                            if (!rowsAndColumns.Contains(((orange.row) - 1, orange.column)))
+                            if (!rottenOranges.Contains(((orange.row) - 1, orange.column)))
                             {
-                                rowsAndColumns.Add(((orange.row) - 1, orange.column));
+                                rottenOranges.Add(((orange.row) - 1, orange.column));
                             }
-                            if (!rowsAndColumns.Contains((orange.row, (orange.column) + 1)))
+                            if (!rottenOranges.Contains((orange.row, (orange.column) + 1)))
                             {
-                                rowsAndColumns.Add((orange.row, (orange.column) + 1));
+                                rottenOranges.Add((orange.row, (orange.column) + 1));
                             }
-                            if (!rowsAndColumns.Contains((orange.row, (orange.column) - 1)))
+                            if (!rottenOranges.Contains((orange.row, (orange.column) - 1)))
                             {
-                                rowsAndColumns.Add((orange.row, (orange.column) - 1));
+                                rottenOranges.Add((orange.row, (orange.column) - 1));
                             }
                         }
                         else if (orange.row == 0)
                         {
                             if (orange.column == 0)
                             {
-                                if (!rowsAndColumns.Contains(((orange.row) + 1, orange.column)))
+                                if (!rottenOranges.Contains(((orange.row) + 1, orange.column)))
                                 {
-                                    rowsAndColumns.Add(((orange.row) + 1, orange.column));
+                                    rottenOranges.Add(((orange.row) + 1, orange.column));
                                 }
-                                if (!rowsAndColumns.Contains((orange.row, (orange.column) + 1)))
+                                if (!rottenOranges.Contains((orange.row, (orange.column) + 1)))
                                 {
-                                    rowsAndColumns.Add((orange.row, (orange.column) + 1));
+                                    rottenOranges.Add((orange.row, (orange.column) + 1));
                                 }
                             }
                             else if (orange.column == L - 1)
                             {
-                                if (!rowsAndColumns.Contains((orange.row, (orange.column) - 1)))
+                                if (!rottenOranges.Contains((orange.row, (orange.column) - 1)))
                                 {
-                                    rowsAndColumns.Add((orange.row, (orange.column) - 1));
+                                    rottenOranges.Add((orange.row, (orange.column) - 1));
                                 }
-                                if (!rowsAndColumns.Contains(((orange.row) + 1, orange.column)))
+                                if (!rottenOranges.Contains(((orange.row) + 1, orange.column)))
                                 {
-                                    rowsAndColumns.Add(((orange.row) + 1, orange.column));
+                                    rottenOranges.Add(((orange.row) + 1, orange.column));
                                 }
                             }
                             else
                             {
-                                if (!rowsAndColumns.Contains(((orange.row) + 1, orange.column)))
+                                if (!rottenOranges.Contains(((orange.row) + 1, orange.column)))
                                 {
-                                    rowsAndColumns.Add(((orange.row) + 1, orange.column));
+                                    rottenOranges.Add(((orange.row) + 1, orange.column));
                                 }
-                                if (!rowsAndColumns.Contains((orange.row, (orange.column) + 1)))
+                                if (!rottenOranges.Contains((orange.row, (orange.column) + 1)))
                                 {
-                                    rowsAndColumns.Add((orange.row, (orange.column) + 1));
+                                    rottenOranges.Add((orange.row, (orange.column) + 1));
                                 }
-                                if (!rowsAndColumns.Contains((orange.row, (orange.column) - 1)))
+                                if (!rottenOranges.Contains((orange.row, (orange.column) - 1)))
                                 {
-                                    rowsAndColumns.Add((orange.row, (orange.column) - 1));
+                                    rottenOranges.Add((orange.row, (orange.column) - 1));
                                 }
                             }
 
@@ -113,39 +112,39 @@ namespace Oranges
                         {
                             if (orange.column == 0)
                             {
-                                if (!rowsAndColumns.Contains(((orange.row) - 1, orange.column)))
+                                if (!rottenOranges.Contains(((orange.row) - 1, orange.column)))
                                 {
-                                    rowsAndColumns.Add(((orange.row) - 1, orange.column));
+                                    rottenOranges.Add(((orange.row) - 1, orange.column));
                                 }
-                                if (!rowsAndColumns.Contains((orange.row, (orange.column) + 1)))
+                                if (!rottenOranges.Contains((orange.row, (orange.column) + 1)))
                                 {
-                                    rowsAndColumns.Add((orange.row, (orange.column) + 1));
+                                    rottenOranges.Add((orange.row, (orange.column) + 1));
                                 }
                             }
                             else if (orange.column == L - 1)
                             {
-                                if (!rowsAndColumns.Contains(((orange.row) - 1, orange.column)))
+                                if (!rottenOranges.Contains(((orange.row) - 1, orange.column)))
                                 {
-                                    rowsAndColumns.Add(((orange.row) - 1, orange.column));
+                                    rottenOranges.Add(((orange.row) - 1, orange.column));
                                 }
-                                if (!rowsAndColumns.Contains((orange.row, (orange.column) - 1)))
+                                if (!rottenOranges.Contains((orange.row, (orange.column) - 1)))
                                 {
-                                    rowsAndColumns.Add((orange.row, (orange.column) - 1));
+                                    rottenOranges.Add((orange.row, (orange.column) - 1));
                                 }
                             }
                             else
                             {
-                                if (!rowsAndColumns.Contains(((orange.row) - 1, orange.column)))
+                                if (!rottenOranges.Contains(((orange.row) - 1, orange.column)))
                                 {
-                                    rowsAndColumns.Add(((orange.row) - 1, orange.column));
+                                    rottenOranges.Add(((orange.row) - 1, orange.column));
                                 }
-                                if (!rowsAndColumns.Contains((orange.row, (orange.column) + 1)))
+                                if (!rottenOranges.Contains((orange.row, (orange.column) + 1)))
                                 {
-                                    rowsAndColumns.Add((orange.row, (orange.column) + 1));
+                                    rottenOranges.Add((orange.row, (orange.column) + 1));
                                 }
-                                if (!rowsAndColumns.Contains((orange.row, (orange.column) - 1)))
+                                if (!rottenOranges.Contains((orange.row, (orange.column) - 1)))
                                 {
-                                    rowsAndColumns.Add((orange.row, (orange.column) - 1));
+                                    rottenOranges.Add((orange.row, (orange.column) - 1));
                                 }
                             }
                         }
@@ -155,7 +154,8 @@ namespace Oranges
 
                 }
             }
-            Console.WriteLine(rowsAndColumns.Count);
+            var unrottenOranges = allOranges - rottenOranges.Count;
+            Console.WriteLine(unrottenOranges);
         }
     }
 }
